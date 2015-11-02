@@ -1,0 +1,18 @@
+<div class="span12">
+	<div class="row">
+		<div class="span12 main-widget widget-classifier">
+			<div class="widget-header">
+				<h1><span class="icon-file-alt"></span> <%= @resource.name %></h1>
+				<span class="widget-title"><%= t('new_classifier') %></span>
+			</div>
+			<div class="row-fluid widget-content">
+				<div class="span3">
+					<%= render :partial => 'category/resource/tabs' %>
+				</div>
+				<div class="span9">
+					<%= render :partial => 'form', :locals => { :c => c, :disabled => false } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

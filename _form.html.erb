@@ -1,0 +1,19 @@
+<%= simple_form_for @classifer, html: { class: "sheet-form form resource_form" } do |form| %>
+  <%= form.input_field :parent_path, as: :string, class: 'uneditable-input', readonly: true  %>
+  <%= form.input_field :answer_ques_for_this_parent, as: :boolean, boolean_style: :inline, wrapper_html: {class: 'answer-question'} %>
+  <%= form.input_field :name, maxlength: 30, :'data-source': @resources.to_json, autocomplete: 'off', 'data-provide': "typeahead" %>
+  <%= form.number_field :percentage, min: 0, max: 100, :'data-toggle': 'tooltip', 'title': t('zero_to_hundred') %>
+
+  <%= form.input :agreement_length, hint: t('agreement_length'),
+      collection: [
+        [t('dont_intend'), 0.1],
+        [t('less_than_year'), 0.3],
+        [t('between_one_two_years'), 0.5],
+        [t('between_three_five_years'), 0.7],
+        [t('more_than_five_years'), 0.9]
+      ], include_blank: false %>
+  <div id="treshold">
+    <%= form.input :treshold, hint: t('treshold'), as: :switcher %>
+  </div>
+  <%= form.submit t(:next), class: "btn btn-primary pull-right" %>
+<% end %>
